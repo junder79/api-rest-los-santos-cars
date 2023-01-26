@@ -9,7 +9,7 @@ const registrarVehiculo = async(req, res) => {
         const vehiculoAlmacenado = await vehiculo.save();
         res.json({ status: 200, message: 'Vehiculo Ingresado Correctamente' });
     } catch (error) {
-        res.json({ status: 400, message: 'Error al ingresar vehiculo ' });
+        res.json({ status: 400, message: 'Error al ingresar vehiculo'});
     }
 }
 
@@ -43,4 +43,14 @@ const getSpecificVehicle = async(req, res) => {
     }
 }
 
-export { registrarVehiculo, getVehiculos, getTipoVehiculo, getSpecificVehicle };
+const updateSpecificVehicle = async (req, res) =>{
+    try {
+        const {idVehiculo} = req.params.idVehiculo;
+        const {nombre,imagen,marca,descripcion,tipoVehiculo,resistencia,velocidad} = req.body;
+        const updateSpecificVehicle = await Vehiculo.updateOne({_id:idVehiculo},{$set:{nombre,imagen,marca,descripcion,tipoVehiculo,resistencia,velocidad}});
+    } catch (error) {
+        res.json({ status: 400, message: 'Error al actualizar vehiculo' });    
+    }
+}
+
+export { registrarVehiculo, getVehiculos, getTipoVehiculo, getSpecificVehicle , updateSpecificVehicle};
