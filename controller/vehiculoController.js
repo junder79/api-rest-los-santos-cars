@@ -53,4 +53,6 @@ const updateSpecificVehicle = async (req, res) =>{
     }
 }
 
+
+
 export { registrarVehiculo, getVehiculos, getTipoVehiculo, getSpecificVehicle , updateSpecificVehicle};
