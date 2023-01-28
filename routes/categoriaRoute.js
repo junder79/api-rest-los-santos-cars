@@ -4,7 +4,7 @@ import { registrarCategoria, getCategorias } from "../controller/categoriaContro
 const router = express.Router();
 
 router.post("/nuevaCategoria", registrarCategoria);
-router.get("/categorias",getCategorias);
+router.get("/",getCategorias);
 
 
 export default router;
