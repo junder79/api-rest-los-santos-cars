@@ -16,5 +16,5 @@ app.use("/api/vehiculos", vehiculoRouter);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
-    console.log("server encendido ", PORT);
+    console.log("server encendidosss ", PORT);
 })
