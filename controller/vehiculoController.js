@@ -53,6 +53,16 @@ const updateSpecificVehicle = async (req, res) =>{
     }
 }
 
+const deleteVehicle = async (req, res) => {
+    try {
+        const  {idVehiculo} = req.params.idVehiculo;
+        const response = await Vehiculo.deleteOne(idVehiculo);
+        res.json({ status: 200, message: 'Vehiculo Eliminado' });
+    } catch (error) {
+          res.json({ status: 400, message: 'Error al Eliminar vehiculo' });    
+    }
+}
 
 
-export { registrarVehiculo, getVehiculos, getTipoVehiculo, getSpecificVehicle , updateSpecificVehicle};
+
+export { registrarVehiculo, getVehiculos, getTipoVehiculo, getSpecificVehicle , updateSpecificVehicle, deleteVehicle};
