@@ -12,7 +12,7 @@ const registrarNoticia = async (req,res) =>{
 
 const getNoticias = async (req,res) =>{
     try {
-        const noticias = await Noticia.find();  
+        const noticias = await Noticia.find().sort({_id:-1});  
         res.json(noticias);    
     } catch (error) {
         res.json({ status: 400, message: 'Error al ingresar noticia'});
