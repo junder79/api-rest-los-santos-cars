@@ -48,4 +48,13 @@ const autenticar = async (req, res) => {
     return res.status(200).json({nombre: usuario.nombre, id : usuario._id , token:generarJWT(usuario.nombre,usuario._id)}); 
 } 
 
-export {getUsuario,registrarUsuario,autenticar};
+
+const confirmar = async (req, res) => {
+    const {token} = req.params;
+    const usuarioConfirma = await Usuario.findOne({token});
+    if(!usuarioConfirma){
+        return res.status(400).json({msg:'Token no válido'}); 
+    }
+    return res.status(200).json(usuarioConfirma); 
+}
+export {getUsuario,registrarUsuario,autenticar,confirmar};

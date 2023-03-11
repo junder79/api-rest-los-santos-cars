@@ -14,6 +14,10 @@ const noticiasSchema = mongoose.Schema({
         type:String,
         required:true,
         trim:true
+    },
+    fecha:{
+        type:Date,
+        required:true,       
     }
 })
 
