@@ -23,7 +23,6 @@ const usuarioSchema = mongoose.Schema({
     },
     token:{
         type:String,
-        required:true,
         trim:true,
     }
 },
