@@ -13,6 +13,7 @@ const registrarNoticia = async (req,res) =>{
 }
 
 const newswire_rockstar_games = async () => {
+   try {
     const browser = await puppeteer.launch({
         headless: 'new' // Configuración para utilizar el nuevo modo Headless
       });
@@ -36,8 +37,12 @@ const newswire_rockstar_games = async () => {
             };
         });
     });
-    return values;
     await browser.close();
+    return values;
+   } catch (error) {
+    res.json({ status: 400, message: 'Error en newswire_rockstar_games'});
+   }
+    
 }
 
 const getNoticias = async (req,res) =>{
