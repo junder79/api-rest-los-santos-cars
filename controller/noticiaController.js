@@ -61,7 +61,7 @@ const getNoticias = async (req,res) =>{
                 __v: 0
             }
         } )
-        res.json(noticiasRockstar);
+        res.json(news_rockstar);
     } catch (error) {
         console.log("errorrrr ", error);
         res.json({ status: 400, message: 'Error al buscar las noticia'});
