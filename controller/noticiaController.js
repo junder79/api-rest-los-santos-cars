@@ -55,7 +55,7 @@ const getNoticias = async (req,res) =>{
         } )
         res.json(noticiasRockstar);
     } catch (error) {
-        res.json({ status: 400, message: 'Error al buscar las noticia'});
+        res.json({ status: 400, message: error});
     }
 
 }
