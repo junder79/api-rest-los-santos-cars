@@ -13,7 +13,9 @@ const registrarNoticia = async (req,res) =>{
 }
 
 const newswire_rockstar_games = async () => {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+        headless: 'new' // Configuración para utilizar el nuevo modo Headless
+      });
     const page = await browser.newPage();
 
     await page.goto(url2, { waitUntil: 'networkidle2' });
@@ -55,7 +57,7 @@ const getNoticias = async (req,res) =>{
         } )
         res.json(noticiasRockstar);
     } catch (error) {
-        res.json({ status: 400, message: error});
+        res.json({ status: 400, message: 'Error al buscar las noticia'});
     }
 
 }
