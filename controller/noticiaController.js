@@ -50,6 +50,7 @@ const getNoticias = async (req,res) =>{
       //  const noticias = await Noticia.find().sort({_id:-1});  
         const news_rockstar = await newswire_rockstar_games();
         let i = 0;
+        console.log("data from rockstar ", news_rockstar);
         const noticiasRockstar = news_rockstar.map(function (articulos,i)  {
             return {
                 _id: i+1,
@@ -62,6 +63,7 @@ const getNoticias = async (req,res) =>{
         } )
         res.json(noticiasRockstar);
     } catch (error) {
+        console.log("errorrrr ", error);
         res.json({ status: 400, message: 'Error al buscar las noticia'});
     }
 
