@@ -40,7 +40,7 @@ const newswire_rockstar_games = async () => {
     await browser.close();
     return values;
    } catch (error) {
-    res.json({ status: 400, message: 'Error en newswire_rockstar_games'});
+    console.log("errorrrr api", error);
    }
     
 }
