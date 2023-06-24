@@ -1,6 +1,9 @@
 import Noticia from '../models/Noticias.js';
+import Vehiculo from "../models/Vehiculo.js";
 import puppeteer from 'puppeteer';
-
+import axios from 'axios';
+import cheerio from 'cheerio';
+import fs from 'fs';
 const url2 = 'https://www.rockstargames.com/es/newswire';
 const registrarNoticia = async (req,res) =>{
     try {
@@ -47,24 +50,10 @@ const newswire_rockstar_games = async () => {
 
 const getNoticias = async (req,res) =>{
     try {
-      //  const noticias = await Noticia.find().sort({_id:-1});  
-        const news_rockstar = await newswire_rockstar_games();
-        let i = 0;
-        console.log("data from rockstar ", news_rockstar);
-        const noticiasRockstar = news_rockstar.map(function (articulos,i)  {
-            return {
-                _id: i+1,
-                titulo: articulos.action,
-                link: "https://www.rockstargames.com" + articulos.url,
-                imagen: articulos.backgroundImage,
-                fecha: articulos.time,
-                __v: 0
-            }
-        } )
-        res.json(news_rockstar);
+        const noticias = await Noticia.find().sort({_id:-1});  
+        res.json(noticias);    
     } catch (error) {
-        console.log("errorrrr ", error);
-        res.json({ status: 400, message: 'Error al buscar las noticia'});
+        res.json({ status: 400, message: 'Error al ingresar noticia'});
     }
 
 }
