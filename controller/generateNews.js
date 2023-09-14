@@ -28,9 +28,14 @@ const generateNews = async (req,res) =>{
                 description: $('.excerpt p ').first().text(),
             }
 
+
+            const noticia = new Noticia(article);
+            const noticiaAlmacenada = await noticia.save();
+            return res.json({ status: 201, message: 'News Save' });
            
         }       
-        res.json({ status: 200, message: 'List newswire' });
+       
+        res.json({ status: 200, message: "not news for save" });
     } catch (error) {
         console.log("error ", error);
         res.json({ status: 400, message: 'Error al listar el newswire'});
